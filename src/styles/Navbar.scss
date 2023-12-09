@@ -3,31 +3,32 @@
   flex-direction: row;
   justify-content: space-between;
   margin-top: 1vmax;
-  > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
 }
 .firstBlock {
-  width: 40%;
-  display: flex;
+  width: 30vmax;
+  display: flex !important;
+  align-items: center;
   justify-content: space-between;
-  > div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    flex-direction: row;
-  }
   > div {
     > h2 {
       text-wrap: nowrap;
     }
+    > p {
+      margin-right: 1rem;
+    }
   }
 }
 .secondBlock {
-  width: 15%;
+  width: 20vmin;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > p {
+    margin-right: 1rem;
+  }
+}
+.firstBlock_nav {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 }

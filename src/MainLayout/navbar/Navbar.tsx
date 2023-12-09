@@ -10,7 +10,7 @@ const Navbar = (props: Props) => {
         <div>
           <h2>JOB KG</h2>
         </div>
-        <div>
+        <div className="firstBlock_nav">
           <p>Вакансии</p>
           <p>Контакты</p>
         </div>
