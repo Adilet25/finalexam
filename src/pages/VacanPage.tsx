@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../components/cards/Card";
 
 import "../styles/Vacan.scss";
+import { Pagination } from "@mui/material";
 
 type Props = {};
 const DATA_VACAN = [
@@ -100,13 +101,14 @@ const DATA_VACAN = [
 
 const VacanPage = (props: Props) => {
   return (
-    <div>
+    <div className="ListBlock">
       <h2 className="title">Вакансии</h2>
       <div className="vacanList">
         {DATA_VACAN.map((item: any) => (
           <Card item={item} key={item.key} />
         ))}
       </div>
+      <Pagination count={10} />
     </div>
   );
 };
