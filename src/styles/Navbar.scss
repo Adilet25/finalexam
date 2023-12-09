@@ -1,3 +1,6 @@
+.logo {
+  cursor: pointer;
+}
 .mainBlock {
   display: flex;
   flex-direction: row;
@@ -31,4 +34,55 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+}
+.burgerMenu {
+  display: none;
+  cursor: pointer;
+  align-items: center;
+}
+.burgerMenu_img {
+  width: 2rem;
+  z-index: 2;
+}
+.openedBurger {
+  z-index: 1;
+  left: 0;
+  top: 0;
+  position: absolute;
+  color: white;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(53, 53, 53);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+  > p {
+    margin-top: 10vmax;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .burgerMenu {
+    display: flex;
+  }
+  .firstBlock_nav {
+    display: none;
+  }
+  .secondBlock {
+    display: none;
+  }
+}
+@media screen and (max-width: 769px) {
+  .firstBlock {
+    width: 40vmax;
+  }
+  .secondBlock {
+    width: 25vmax;
+  }
+}
+@media screen and (max-width: 415px) {
+  .firstBlock_nav {
+    display: none;
+  }
 }
