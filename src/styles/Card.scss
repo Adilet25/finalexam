@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 15vmax;
+  width: 70%;
   height: 10vmax;
   box-shadow: rgba(0, 0, 0, 0.256) 0px 10px 30px;
   padding: 1rem 2rem;
@@ -28,4 +28,9 @@
 }
 .likeBtn {
   cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .cardBlock {
+    height: 15vmax;
+  }
 }
