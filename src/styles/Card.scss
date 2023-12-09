@@ -1,0 +1,31 @@
+.cardBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15vmax;
+  height: 10vmax;
+  box-shadow: rgba(0, 0, 0, 0.256) 0px 10px 30px;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+}
+.firstInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.secondInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.infoTitle {
+  font-weight: 600;
+}
+.infoBtn {
+  color: rgba(141, 28, 255, 1);
+  cursor: pointer;
+}
+.likeBtn {
+  cursor: pointer;
+}

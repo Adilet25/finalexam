@@ -1,0 +1,10 @@
+.title {
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.vacanList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2rem;
+}
