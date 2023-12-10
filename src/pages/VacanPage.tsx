@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "../components/cards/Card";
 
 import "../styles/Vacan.scss";
@@ -99,7 +98,7 @@ const DATA_VACAN = [
   },
 ];
 
-const VacanPage = (props: Props) => {
+const VacanPage = (_props: Props) => {
   return (
     <div className="ListBlock">
       <h2 className="title">Вакансии</h2>

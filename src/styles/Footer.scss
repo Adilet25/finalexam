@@ -10,4 +10,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  > div > p {
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .close1024 {
+    display: none;
+  }
+}
+@media screen and (max-width: 425px) {
+  .close425 {
+    display: none;
+  }
 }

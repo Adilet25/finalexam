@@ -28,12 +28,22 @@
   justify-content: space-between;
   > p {
     margin-right: 1rem;
+    cursor: pointer;
+  }
+  :hover {
+    color: rgba(141, 28, 255, 1);
   }
 }
 .firstBlock_nav {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  > p {
+    cursor: pointer;
+  }
+  :hover {
+    color: rgba(141, 28, 255, 1);
+  }
 }
 .burgerMenu {
   display: none;

@@ -1,23 +1,31 @@
 import React from "react";
 import "../../styles/Footer.scss";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  const navigate = useNavigate();
   return (
     <div className="footerBlock">
-      <h1>JOB KG</h1>
-      <div>
-        <p>Для соискателя</p>
-        <p>Для работодателя</p>
-        <p>Инвесторам</p>
+      <h1 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+        JOB KG
+      </h1>
+      <div className="close1024">
+        <p onClick={() => navigate("/forworkers")}>Для соискателя</p>
+        <p onClick={() => navigate("/foremployers")}>Для работодателя</p>
+        <p onClick={() => navigate("/forinvestors")}>Инвесторам</p>
       </div>
       <div>
-        <p>О сервисе </p>
-        <p>Помощь</p>
-        <p>Служба поддержки</p>
+        <p onClick={() => navigate("/aboutus")} className="close1024">
+          О сервисе{" "}
+        </p>
+        <p onClick={() => navigate("/contacts")} className="close1024">
+          Служба поддержки
+        </p>
+        <p onClick={() => navigate("/more")}>Доп Сведения...</p>
       </div>
-      <div>
+      <div className="close425">
         <p>+996 999 661 777</p>
         <p>+996 709 831 050</p>
       </div>

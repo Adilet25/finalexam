@@ -1,7 +1,15 @@
-import React from "react";
 import HomePage from "./pages/HomePage";
 import { Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import CardAboutPage from "./pages/CardAboutPage";
 import VacanPage from "./pages/VacanPage";
+import ForEmployers from "./pages/ForEmployers";
+import ForWorkers from "./pages/ForWorkers";
+import ForInvestors from "./pages/ForInvestors";
+import AboutUs from "./pages/AboutUs";
+import ContactPage from "./pages/ContactPage";
+import MoreInfo from "./pages/MoreInfo";
 
 type Props = {};
 
@@ -11,9 +19,59 @@ const PUBLIC_ROUTES = [
     path: "/",
     id: 1,
   },
+  {
+    element: <LoginPage />,
+    path: "/login",
+    id: 2,
+  },
+  {
+    element: <RegisterPage />,
+    path: "/register",
+    id: 3,
+  },
+  {
+    element: <CardAboutPage />,
+    path: "/details/:id",
+    id: 4,
+  },
+  {
+    element: <VacanPage />,
+    path: "/vacancy",
+    id: 5,
+  },
+  {
+    element: <ForEmployers />,
+    path: "/foremployers",
+    id: 6,
+  },
+  {
+    element: <ForWorkers />,
+    path: "/forworkers",
+    id: 7,
+  },
+  {
+    element: <ForInvestors />,
+    path: "/forinvestors",
+    id: 8,
+  },
+  {
+    element: <AboutUs />,
+    path: "/aboutus",
+    id: 9,
+  },
+  {
+    element: <ContactPage />,
+    path: "/contacts",
+    id: 10,
+  },
+  {
+    element: <MoreInfo />,
+    path: "/more",
+    id: 11,
+  },
 ];
 
-const MainRoutes = (props: Props) => {
+const MainRoutes = (_props: Props) => {
   return (
     <Routes>
       {PUBLIC_ROUTES.map((item) => (

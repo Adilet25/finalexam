@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import heart from "../../assets/heart.svg";
-import heart2 from "../../assets/Vector (20).svg";
 import "../../styles/Card.scss";
-type Props = {};
+import { useNavigate } from "react-router-dom";
 
 const Card = (item: any) => {
   //   const [like, setLike] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -16,7 +14,11 @@ const Card = (item: any) => {
           <p>{item.item.graph}</p>
         </div>
         <div className="secondInfo">
-          <p className="infoBtn">Узнать больше</p>
+          <p
+            className="infoBtn"
+            onClick={() => navigate(`/details/${item.item.key}`)}>
+            Узнать больше
+          </p>
           <p>{item.item.time}</p>
           {/* {like ? (
             <img

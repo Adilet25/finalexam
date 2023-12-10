@@ -6,7 +6,7 @@ import "../../styles/Navbar.scss";
 
 type Props = {};
 
-const Navbar = (props: Props) => {
+const Navbar = (_props: Props) => {
   const navigate = useNavigate();
   const [buttonStatus, setButtonStatus] = useState(true);
 
@@ -15,16 +15,18 @@ const Navbar = (props: Props) => {
       <div className="mainBlock">
         <div className="firstBlock">
           <div>
-            <h2 className="logo">JOB KG</h2>
+            <h2 className="logo" onClick={() => navigate("/")}>
+              JOB KG
+            </h2>
           </div>
           <div className="firstBlock_nav">
-            <p>Вакансии</p>
-            <p>Контакты</p>
+            <p onClick={() => navigate("/vacancy")}>Вакансии</p>
+            <p onClick={() => navigate("/contacts")}>Контакты</p>
           </div>
         </div>
         <div className="secondBlock">
-          <p>Войти</p>
-          <p>Регистрация</p>
+          <p onClick={() => navigate("/login")}>Войти</p>
+          <p onClick={() => navigate("/register")}>Регистрация</p>
         </div>
         <div className="burgerMenu">
           {buttonStatus ? (
@@ -52,11 +54,13 @@ const Navbar = (props: Props) => {
         <div style={{ display: "none" }}></div>
       ) : (
         <div className="openedBurger">
-          <h2 className="logo">JOB KG</h2>
-          <p>Вакансии</p>
-          <p>Контакты</p>
-          <p>Войти</p>
-          <p>Регистрация</p>
+          <h2 className="logo" onClick={() => navigate("/")}>
+            JOB KG
+          </h2>
+          <p onClick={() => navigate("/vacancy")}>Вакансии</p>
+          <p onClick={() => navigate("/contacts")}>Контакты</p>
+          <p onClick={() => navigate("/login")}>Войти</p>
+          <p onClick={() => navigate("/register")}>Регистрация</p>
         </div>
       )}
     </>
