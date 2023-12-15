@@ -11,7 +11,7 @@ const Register = (_props: Props) => {
   return (
     <div className="regMain_block">
       <div>
-        <img src={loginimg} alt="" />
+        <img src={loginimg} alt="" className="imgreg" />
       </div>
       <div className="regPanel">
         <h2>Регистрация</h2>

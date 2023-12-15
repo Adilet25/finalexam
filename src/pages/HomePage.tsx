@@ -1,10 +1,9 @@
-import React from "react";
 import MainSection from "../components/sections/mainSection/MainSection";
 import VacanPage from "./VacanPage";
 
 type Props = {};
 
-const HomePage = (props: Props) => {
+const HomePage = (_props: Props) => {
   return (
     <div>
       <MainSection />

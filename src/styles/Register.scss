@@ -5,11 +5,12 @@
   align-items: center;
   justify-content: space-around;
 }
+
 .regPanel {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  height: 30vmax;
+  width: 35%;
+  height: 30rem;
   justify-content: space-between;
   > input {
     height: 3vmax;
@@ -45,6 +46,9 @@
   display: flex;
   align-items: center;
 }
+.checkBox_reg > input {
+  margin-right: 5px;
+}
 .regPanel_inputs {
   height: 3vmax;
   padding-left: 1rem;
@@ -72,18 +76,33 @@
   }
   .regPanel {
     width: 80%;
-    height: 50vmax;
+    height: auto;
   }
   .regPanel_inputs,
   .regPanel_btn,
   .selectreg {
-    height: 5vmax;
+    height: 6vmax;
   }
   .regPanel > input {
-    height: 5vmax;
+    height: 6vmax;
+    margin-top: 1rem;
   }
 
   .regMain_block > div > img {
     width: 40vmax;
+  }
+  .regPanel_inputsBlock {
+    flex-direction: column;
+  }
+  .regPanel_inputs {
+    width: auto;
+    margin-top: 1rem;
+  }
+  .checkBox_reg,
+  .selectreg {
+    margin-top: 1rem;
+  }
+  .selectreg {
+    height: 10vmin;
   }
 }

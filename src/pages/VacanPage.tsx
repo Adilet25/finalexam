@@ -4,6 +4,7 @@ import "../styles/Vacan.scss";
 import { Pagination } from "@mui/material";
 
 type Props = {};
+
 const DATA_VACAN = [
   {
     title: "Дизайнер корпусной мебели",

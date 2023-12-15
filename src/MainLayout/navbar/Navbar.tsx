@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import burger from "../../assets/burger-menu-svgrepo-com.svg";
 import closeburgericon from "../../assets/closeburger.svg";
