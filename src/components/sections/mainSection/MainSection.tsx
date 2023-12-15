@@ -1,10 +1,9 @@
-import React from "react";
 import manSearching from "../../../assets/mainSection.svg";
 import "../../../styles/mainSection.scss";
 
 type Props = {};
 
-const MainSection = (props: Props) => {
+const MainSection = (_props: Props) => {
   return (
     <div className="container">
       <div>

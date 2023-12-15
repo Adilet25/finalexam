@@ -1,10 +1,9 @@
-import React from "react";
 import "../../styles/Footer.scss";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
-const Footer = (props: Props) => {
+const Footer = (_props: Props) => {
   const navigate = useNavigate();
   return (
     <div className="footerBlock">
