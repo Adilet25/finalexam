@@ -10,6 +10,8 @@ import ForInvestors from "./pages/ForInvestors";
 import AboutUs from "./pages/AboutUs";
 import ContactPage from "./pages/ContactPage";
 import MoreInfo from "./pages/MoreInfo";
+import Rezum from "./pages/Rezum";
+import NoviyRezume from "./pages/NoviyRezume";
 
 type Props = {};
 
@@ -68,6 +70,16 @@ const PUBLIC_ROUTES = [
     element: <MoreInfo />,
     path: "/more",
     id: 11,
+  },
+  {
+    element:<Rezum/>,
+    path:"/rezum",
+    id:12,
+  },
+  {
+    element:<NoviyRezume/>,
+    path:"/noviyrezume",
+    id:13
   },
 ];
 
