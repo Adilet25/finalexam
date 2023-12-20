@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import burger from "../../assets/burger-menu-svgrepo-com.svg";
 import closeburgericon from "../../assets/closeburger.svg";
 import "../../styles/Navbar.scss";
+import { motion } from "framer-motion";
 
 type Props = {};
 
 const Navbar = (_props: Props) => {
   const navigate = useNavigate();
-  const [buttonStatus, setButtonStatus] = useState(true);
+  const [buttonStatus, setButtonStatus] = useState(false);
 
   return (
     <>
@@ -31,16 +32,16 @@ const Navbar = (_props: Props) => {
         <div className="burgerMenu">
           {buttonStatus ? (
             <img
-              src={burger}
+              src={closeburgericon}
               alt="X"
-              className="burgerMenu_img"
+              className="burgerMenu_img closingImg"
               onClick={() => {
                 setButtonStatus(!buttonStatus);
               }}
             />
           ) : (
             <img
-              src={closeburgericon}
+              src={burger}
               alt="X"
               className="burgerMenu_img"
               onClick={() => {
@@ -50,19 +51,39 @@ const Navbar = (_props: Props) => {
           )}
         </div>
       </div>
-      {buttonStatus ? (
-        <div style={{ display: "none" }}></div>
-      ) : (
-        <div className="openedBurger">
-          <h2 className="logo" onClick={() => navigate("/")}>
-            JOB KG
-          </h2>
-          <p onClick={() => navigate("/vacancy")}>Вакансии</p>
-          <p onClick={() => navigate("/contacts")}>Контакты</p>
-          <p onClick={() => navigate("/login")}>Войти</p>
-          <p onClick={() => navigate("/register")}>Регистрация</p>
-        </div>
-      )}
+      <div className={buttonStatus ? "openedBurger " : "closedBurger"}>
+        <h2
+          className="logo"
+          onClick={() => {
+            navigate("/"), setButtonStatus(!buttonStatus);
+          }}>
+          JOB KG
+        </h2>
+        <p
+          onClick={() => {
+            navigate("/vacancy"), setButtonStatus(!buttonStatus);
+          }}>
+          Вакансии
+        </p>
+        <p
+          onClick={() => {
+            navigate("/contacts"), setButtonStatus(!buttonStatus);
+          }}>
+          Контакты
+        </p>
+        <p
+          onClick={() => {
+            navigate("/login"), setButtonStatus(!buttonStatus);
+          }}>
+          Войти
+        </p>
+        <p
+          onClick={() => {
+            navigate("/register"), setButtonStatus(!buttonStatus);
+          }}>
+          Регистрация
+        </p>
+      </div>
     </>
   );
 };
