@@ -2,14 +2,26 @@ import { useNavigate } from "react-router-dom";
 import loginimg from "../../../assets/Tablet login-amico 1.svg";
 import "../../../styles/Login.scss";
 import { FormEvent, useState } from "react";
-type Props = {};
+import { useAuth } from "../../../contexts/AuthContextProvider";
 
-const Login = (_props: Props) => {
+const Login = () => {
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
-  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
-  const handleSubmit = (e: FormEvent) => {
+
+  const { login } = useAuth();
+
+  function loginUser() {
+    let formData = new FormData();
+    formData = {
+      email: email,
+      password: password,
+    };
+    login(formData);
+  }
+
+  const handleSubmit = () => {
     e.preventDefault();
   };
 
@@ -23,9 +35,9 @@ const Login = (_props: Props) => {
         <input
           type="text"
           placeholder="Электронный адрес"
-          value={login}
+          value={email}
           onChange={(e) => {
-            setLogin(e.target.value);
+            setEmail(e.target.value);
           }}
         />
         <input
@@ -47,9 +59,8 @@ const Login = (_props: Props) => {
         </div>
         <p
           className="loginPanel_btn"
-          onClick={(e) => {
-            handleSubmit(e);
-            navigate("/");
+          onClick={() => {
+            loginUser();
           }}>
           Войти
         </p>

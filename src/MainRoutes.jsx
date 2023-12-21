@@ -11,8 +11,6 @@ import AboutUs from "./pages/AboutUs";
 import ContactPage from "./pages/ContactPage";
 import MoreInfo from "./pages/MoreInfo";
 
-type Props = {};
-
 const PUBLIC_ROUTES = [
   {
     element: <HomePage />,
@@ -71,7 +69,7 @@ const PUBLIC_ROUTES = [
   },
 ];
 
-const MainRoutes = (_props: Props) => {
+const MainRoutes = () => {
   return (
     <Routes>
       {PUBLIC_ROUTES.map((item) => (

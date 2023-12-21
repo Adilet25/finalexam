@@ -1,8 +1,6 @@
 import Register from "../components/auth/register/Register";
 
-type Props = {};
-
-const RegisterPage = (_props: Props) => {
+const RegisterPage = () => {
   return (
     <div>
       <Register />

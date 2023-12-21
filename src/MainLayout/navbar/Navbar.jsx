@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "../../contexts/AuthContextProvider";
 import { useNavigate } from "react-router-dom";
 import burger from "../../assets/burger-menu-svgrepo-com.svg";
 import closeburgericon from "../../assets/closeburger.svg";
 import "../../styles/Navbar.scss";
-import { motion } from "framer-motion";
 
-type Props = {};
-
-const Navbar = (_props: Props) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const [buttonStatus, setButtonStatus] = useState(false);
+  const { logout, user, checkAuth } = useAuth();
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      checkAuth();
+    }
+  }, []);
   return (
     <>
       <div className="mainBlock">
