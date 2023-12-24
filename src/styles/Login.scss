@@ -54,7 +54,7 @@
   }
   .loginPanel {
     width: 80%;
-    height: 50vmax;
+    height: 35vmax;
   }
   .loginPanel_inputs,
   .loginPanel_btn {
@@ -66,5 +66,12 @@
 
   .loginMain_block > div > img {
     width: 40vmax;
+  }
+}
+@media screen and (max-width: 410px) {
+  .loginPanel_register {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 }

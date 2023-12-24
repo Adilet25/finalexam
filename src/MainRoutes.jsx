@@ -10,6 +10,7 @@ import ForInvestors from "./pages/ForInvestors";
 import AboutUs from "./pages/AboutUs";
 import ContactPage from "./pages/ContactPage";
 import MoreInfo from "./pages/MoreInfo";
+import MyProfilePage from "./pages/MyProfilePage";
 
 const PUBLIC_ROUTES = [
   {
@@ -66,6 +67,11 @@ const PUBLIC_ROUTES = [
     element: <MoreInfo />,
     path: "/more",
     id: 11,
+  },
+  {
+    element: <MyProfilePage />,
+    path: "/myprofile/*",
+    id: 12,
   },
 ];
 

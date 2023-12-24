@@ -1,20 +1,30 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "../../contexts/AuthContextProvider";
+import { useAuth } from "../../../contexts/AuthContextProvider";
 import { useNavigate } from "react-router-dom";
-import burger from "../../assets/burger-menu-svgrepo-com.svg";
-import closeburgericon from "../../assets/closeburger.svg";
-import "../../styles/Navbar.scss";
+import burger from "../../../assets/burger-menu-svgrepo-com.svg";
+import closeburgericon from "../../../assets/closeburger.svg";
+import "../../../styles/Navbar.scss";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [buttonStatus, setButtonStatus] = useState(false);
-  const { logout, user, checkAuth } = useAuth();
+  const {
+    logout,
+    user,
+    checkAuth,
+    userActive,
+    getUser,
+    tokenuser,
+    refreshAccessToken,
+  } = useAuth();
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      checkAuth();
+    refreshAccessToken();
+    if (userActive) {
+      alert("u logined successfull");
     }
-  }, []);
+  }, [userActive]);
+
   return (
     <>
       <div className="mainBlock">
@@ -25,14 +35,20 @@ const Navbar = () => {
             </h2>
           </div>
           <div className="firstBlock_nav">
-            <p onClick={() => navigate("/vacancy")}>Вакансии</p>
-            <p onClick={() => navigate("/contacts")}>Контакты</p>
+            <p onClick={() => getUser()}>Вакансии</p>
+            <p onClick={() => console.log(tokenuser)}>Контакты</p>
           </div>
         </div>
-        <div className="secondBlock">
-          <p onClick={() => navigate("/login")}>Войти</p>
-          <p onClick={() => navigate("/register")}>Регистрация</p>
-        </div>
+        {userActive ? (
+          <div className="secondBlock">
+            <p onClick={() => navigate("/myprofile")}>Мой Профиль</p>
+          </div>
+        ) : (
+          <div className="secondBlock">
+            <p onClick={() => navigate("/login")}>Войти</p>
+            <p onClick={() => navigate("/register")}>Регистрация</p>
+          </div>
+        )}
         <div className="burgerMenu">
           {buttonStatus ? (
             <img

@@ -1,6 +1,8 @@
 import "./styles/App.scss";
-import MainLayout from "./MainLayout/MainLayout.jsx";
+import MainLayout from "./layouts/MainLayout/MainLayout.jsx";
 import MainRoutes from "./MainRoutes";
+import ProfileRoutes from "./ProfileRoutes.jsx";
+
 import AuthContextProvider from "./contexts/AuthContextProvider.jsx";
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
         <AuthContextProvider>
           <MainLayout>
             <MainRoutes />
+            <ProfileRoutes />
           </MainLayout>
         </AuthContextProvider>
       </div>

@@ -9,15 +9,13 @@ const API = "http://26.78.236.231:2000/";
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
+  const [tokenuser, setTokenUser] = useState("");
   const [error, setError] = useState("");
+  const [userActive, setUserActive] = useState(false);
 
   const navigate = useNavigate();
 
-  const config = {
-    headers: { "Content-Type": "multipart/form-data" },
-  };
-
-  async function register(formData, navigate) {
+  async function register(formData) {
     try {
       const response = await fetch(`${API}auth/registration`, {
         method: "POST",
@@ -29,7 +27,7 @@ const AuthContextProvider = ({ children }) => {
 
       if (response.ok) {
         console.log(formData);
-        // navigate("/login");
+        navigate("/login");
       } else {
         const errorData = await response.json();
         console.log(errorData);
@@ -40,38 +38,6 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
-  // async function login(formData, navigate, username) {
-  //   try {
-  //     let res = await axios.post(`${API}auth/login`, formData);
-  //     localStorage.setItem("tokens", JSON.stringify(res.data));
-  //     localStorage.setItem("username", JSON.stringify(username));
-  //     navigate("/");
-  //     console.log(`${username}`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   } finally {
-  //   }
-  // }
-  // async function login(formData, navigate) {
-  //   try {
-  //     const response = await fetch(`${API}auth/login`, {
-  //       method: "POST",
-  //       body: formData,
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       localStorage.setItem("tokens", JSON.stringify(data));
-  //       navigate("/");
-  //       console.log(`${username}`);
-  //     } else {
-  //       const errorData = await response.json();
-  //       console.log(errorData);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
   async function login(formData) {
     try {
       const response = await fetch(`${API}auth/login`, {
@@ -84,8 +50,8 @@ const AuthContextProvider = ({ children }) => {
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem("tokens", JSON.stringify(data));
-        console.log("succes!");
+        setUserActive(!userActive);
+        setTokenUser(JSON.stringify(data));
         navigate("/");
       } else {
         console.log("Login failed:", response.status);
@@ -95,90 +61,78 @@ const AuthContextProvider = ({ children }) => {
     }
   }
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    setTokenUser("");
     setUser("");
-    navigate("/");
+    setUserActive(!userActive);
   };
 
-  // const checkAuth = async () => {
-  //   // console.log('WORKED');
-  //   let token = JSON.parse(localStorage.getItem("token"));
-
-  //   try {
-  //     const Authorization = `Bearer ${token.access}`;
-
-  //     let res = await axios.post(
-  //       `${API}auth/refresh-accessToken`,
-  //       { refresh: token.refresh },
-  //       { headers: { Authorization } }
-  //     );
-
-  //     // console.log(res);
-
-  //     localStorage.setItem(
-  //       "token",
-  //       JSON.stringify({
-  //         refresh: token.refresh,
-  //         access: res.data.access,
-  //       })
-  //     );
-
-  //     let username = localStorage.getItem("username");
-  //     setUser(username);
-  //   } catch (e) {
-  //     console.log(e);
-  //     logout();
-  //   }
-  // };
-  const checkAuth = async () => {
-    let token = JSON.parse(localStorage.getItem("token"));
+  async function refreshAccessToken() {
+    let tokentemp = JSON.parse(tokenuser);
+    let refreshToken = tokentemp.refreshToken;
+    console.log("refreshing");
 
     try {
-      const Authorization = `Bearer ${token.access}`;
-
-      const response = await fetch(`${API}api/token/refresh/`, {
+      const response = await fetch(`${API}auth/refresh-accessToken`, {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${refreshToken}`,
           "Content-Type": "application/json",
-          Authorization: Authorization,
         },
-        body: JSON.stringify({ refresh: token.refresh }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem(
-          "token",
-          JSON.stringify({
-            refresh: token.refresh,
-            access: data.access,
-          })
-        );
-
-        let username = localStorage.getItem("username");
-        setUser(username);
-        console.log("succesdwd!");
-      } else {
-        console.log("Token refresh failed:", response.status);
-        // logout();
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
       }
+      const data = await response.json();
+      setTokenUser(
+        JSON.stringify({
+          accessToken: data.accessToken,
+          refreshToken: refreshToken,
+        })
+      );
+      console.log("success!");
     } catch (error) {
-      console.error("Error:", error);
-      // logout();
+      console.error("There was a problem with the fetch operation:", error);
+      return null;
     }
-  };
+  }
+  async function getUser() {
+    let tokentemp = JSON.parse(tokenuser);
+    let accessToken = tokentemp.accessToken;
+    try {
+      const response = await fetch(`${API}users/myProfile`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      const userData = await response.json();
+      console.log("User info:", userData); // Вывод информации о пользователе в консоль
+      setUser(userData); // Возвращает данные о пользователе (может быть использовано для обработки в вызывающей функции)
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      refreshAccessToken();
+      return null; // В случае ошибки возвращает null или другое значение по умолчанию
+    }
+  }
 
   return (
     <authContext.Provider
       value={{
         user,
         error,
-
+        userActive,
+        tokenuser,
+        refreshAccessToken,
+        getUser,
         register,
         login,
         logout,
-        checkAuth,
       }}>
       {children}
     </authContext.Provider>

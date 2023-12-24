@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
-import "../styles/MainLayout.scss";
+import "../../styles/MainLayout.scss";
 import { motion } from "framer-motion";
 
 const MainLayout = ({ children }) => {

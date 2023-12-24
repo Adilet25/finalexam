@@ -1,4 +1,4 @@
-import "../../styles/Footer.scss";
+import "../../../styles/Footer.scss";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};
