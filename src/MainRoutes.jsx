@@ -11,6 +11,8 @@ import AboutUs from "./pages/AboutUs";
 import ContactPage from "./pages/ContactPage";
 import MoreInfo from "./pages/MoreInfo";
 import MyProfilePage from "./pages/MyProfilePage";
+import Rezum from "./pages/Rezum";
+import NoviyRezume from "./pages/NoviyRezume";
 
 const PUBLIC_ROUTES = [
   {
@@ -72,6 +74,16 @@ const PUBLIC_ROUTES = [
     element: <MyProfilePage />,
     path: "/myprofile/*",
     id: 12,
+  },
+  {
+    element: <Rezum />,
+    path: "/rezum",
+    id: 14,
+  },
+  {
+    element: <NoviyRezume />,
+    path: "/noviyrezume",
+    id: 13,
   },
 ];
 

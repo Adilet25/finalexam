@@ -11,6 +11,7 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [tokenuser, setTokenUser] = useState("");
   const [error, setError] = useState("");
+  const [loginStatus, setLoginStatus] = useState(Boolean(true));
   const [userActive, setUserActive] = useState(false);
 
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const AuthContextProvider = ({ children }) => {
 
       if (response.ok) {
         console.log(formData);
+        getUser();
         navigate("/login");
       } else {
         const errorData = await response.json();
@@ -52,9 +54,11 @@ const AuthContextProvider = ({ children }) => {
         const data = await response.json();
         setUserActive(!userActive);
         setTokenUser(JSON.stringify(data));
+        setLoginStatus(true);
         navigate("/");
       } else {
         console.log("Login failed:", response.status);
+        setLoginStatus(false);
       }
     } catch (err) {
       console.error("Error:", err);
@@ -120,7 +124,60 @@ const AuthContextProvider = ({ children }) => {
       return null; // В случае ошибки возвращает null или другое значение по умолчанию
     }
   }
+  async function updateEmployer(formData) {
+    let tokentemp = JSON.parse(tokenuser);
+    let accessToken = tokentemp.accessToken;
+    try {
+      const response = await fetch(`${API}employers/edit`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
+      if (response.ok) {
+        console.log(formData);
+        getUser();
+        const updatedUser = await response.json();
+        console.log("Updated user:", updatedUser);
+      } else {
+        const errorData = await response.json();
+        console.log(errorData);
+        console.log(JSON.stringify(formData));
+      }
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  }
+  async function updateEmployee(formData) {
+    let tokentemp = JSON.parse(tokenuser);
+    let accessToken = tokentemp.accessToken;
+    try {
+      const response = await fetch(`${API}employees/edit`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log(formData);
+        getUser();
+        const updatedUser = await response.json();
+        console.log("Updated user:", updatedUser);
+      } else {
+        const errorData = await response.json();
+        console.log(errorData);
+        console.log(JSON.stringify(formData));
+      }
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  }
   return (
     <authContext.Provider
       value={{
@@ -128,7 +185,10 @@ const AuthContextProvider = ({ children }) => {
         error,
         userActive,
         tokenuser,
+        loginStatus,
         refreshAccessToken,
+        updateEmployee,
+        updateEmployer,
         getUser,
         register,
         login,

@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
 
-  const { login } = useAuth();
+  const { login, loginStatus } = useAuth();
 
   function loginUser() {
     let formData = new FormData();
@@ -32,6 +32,11 @@ const Login = () => {
       </div>
       <div className="loginPanel">
         <h2>Вход</h2>
+        {loginStatus ? (
+          <div></div>
+        ) : (
+          <div style={{ color: "red" }}>Неправильный логин или пароль</div>
+        )}
         <input
           type="text"
           placeholder="Электронный адрес"

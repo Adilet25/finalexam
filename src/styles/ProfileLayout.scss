@@ -20,15 +20,14 @@
     color: rgba(141, 28, 255, 1);
   }
 }
-// @media screen and (max-width: 1024px) {
-//   .profileBlock_Navigation {
-//     width: 80vw;
-//   }
-// }
+
 @media screen and (max-width: 768px) {
   .profileBlock_Navigation {
     width: 85%;
-    padding: 1rem 1.8rem;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 5rem;
+    padding: 1rem;
   }
 }
 

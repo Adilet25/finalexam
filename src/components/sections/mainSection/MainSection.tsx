@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import manSearching from "../../../assets/mainSection.svg";
 import "../../../styles/mainSection.scss";
 
 type Props = {};
 
 const MainSection = (_props: Props) => {
+  const navigate = useNavigate();
   return (
     <div className="container">
       <div>
@@ -19,7 +21,9 @@ const MainSection = (_props: Props) => {
           />
           <button className="infoBlock_btn btn_naity">Найти</button>
         </div>
-        <button className="infoBlock_btn btn_razmestit">
+        <button
+          className="infoBlock_btn btn_razmestit"
+          onClick={() => navigate("/noviyrezume")}>
           Разместить резюме/вакансию
         </button>
       </div>
