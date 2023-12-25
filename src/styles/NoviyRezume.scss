@@ -65,6 +65,19 @@
 .Pod {
   margin-top: 2rem;
 }
+.rezum_btn {
+  background-color: rgba(141, 28, 255, 1);
+  color: white;
+  width: 10rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
+  border-radius: 5px;
+  padding-left: 1rem;
+  border: none;
+}
+.rezum_btn:hover {
+  box-shadow: rgba(142, 28, 255, 0.485) 0px 2px 20px;
+}
 @media screen and (max-width: 768px) {
   .oPole {
     width: 100%;

@@ -44,6 +44,7 @@ const NoviyRezume = (_props: Props) => {
         <h3>Требования</h3>
         <textarea name="" id="" className="oPole"></textarea>
       </div>
+      <button className="rezum_btn">Сохранить</button>
     </div>
   );
 };
